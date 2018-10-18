@@ -5,10 +5,10 @@ $dbuser="anjal";
 $dbpass="anjal";
 $dbname="student_feedback_survey";
 $username = $_SESSION['username'];
-echo $username;
+
 
 $student_id = $_SESSION['student_id'];
-echo $student_id;
+
 $connection= mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
  $group[0]=$_POST['group1'];  
  $group[1]=$_POST['group2'];  
@@ -34,7 +34,9 @@ while($row = $questionidentity->fetch_assoc()){
 
 unset($_SESSION['loggedIN']);
 session_destroy();
-header('Location: index.php');
+echo "Feedback successfully entered";
+header('Refresh:1;URL=index.php');
+
 exit();
 
 ?>

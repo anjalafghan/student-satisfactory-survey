@@ -19,9 +19,9 @@ if(!isset($_SESSION['loggedIN'])){
 <body>
      <nav>
     <div class="nav-wrapper pink">
-      <a href="#" class="brand-logo center">Logo</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="logout.php">Logout</a></li>
+        <li><a href="faculty_main.php">Faculty Home</a></li>
 
       </ul>
     </div>
