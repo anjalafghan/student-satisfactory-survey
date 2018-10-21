@@ -30,49 +30,73 @@ if(!isset($_SESSION['loggedIN'])){
      <div class="row ">
     <div class="col s12 m6 l12 ">
       <div class="card white darken-1 z-depth-4">
+      <div class="card-image">
+          <img src="saraswati.png">
+        </div>
         <div class="card-content black-text">
-          <span class="card-title"><h3>Report</h3></span>
+        <span class="card-title center">INFORMATION TECHNOLOGY</span>
+          <span class="card-title"><h4>Student Satisfactory Survey Report</h4></span>
           <?php
     $dbhost="localhost";
 $dbuser="anjal";
 $dbpass="anjal";
 $dbname="student_feedback_survey";
 $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
-  $data = $connection->query("SELECT * FROM final_view ");
-   if ($result->num_rows >= 0) {?>
-<table class="striped">
-    <thead>
-       <tr>
-        <th>student_id</th>
-        <th>department</th>
-        <th>division</th>
-        <th>question_name</th>
-        <th>answer</th>
-      </tr> 
-    </thead>
-    </table>
-    <?php
+ $faculty_department = $_SESSION['faculty_department'];
+  $data = $connection->query("SELECT feedback.student_id,feedback.department,GROUP_CONCAT(answer SEPARATOR ' ') AS Answer from feedback WHERE feedback.department = '$faculty_department' GROUP BY student_id");
+  $average = $connection->query("SELECT feedback.department, ROUND(AVG(answer),2) AS average FROM feedback WHERE feedback.department='$faculty_department'");
+ while($row = $average->fetch_assoc()){
+  $average_all = $row['average'];
+ }
+   if ($result->num_rows >= 0) {
+     
+echo "<table class='striped'>";
+    echo "<thead>";
+       echo "<tr class='padd'>";
+        echo "<th>student_id</th>";
+        echo "<th>Q 1</th>";
+        echo "<th>Q 2</th>";
+        echo "<th>Q 3</th> ";
+        echo "<th>Q 4</th> ";
+        echo "<th>Q 5</th> ";
+        echo "<th>Q 6</th> ";
+        echo "<th>Q 7</th> ";
+        echo "<th>Q 8</th> ";
+        echo "<th>Q 9</th> ";
+        echo "<th>Q 10</th>";
+      echo "</tr> ";
+    echo "</thead>";
+   echo " </table>";
+   
  while($row = $data->fetch_assoc()){
   $id = $row['student_id'];
-  $department = $row['department'];
-  $division= $row['division'];
-  $question_name=$row['question_name'];
-  $answer=$row['answer'];
- ?>
-  <table class="striped">
-  <tbody>
-    <tr>
-      <td><?php  print $row['student_id']; ?></td>
-      <td><?php print $row['department']; ?></td>
-      <td><?php print $row['division']; ?></td>
-      <td><?php print $row['question_name']; ?></td>
-      <td><?php print $row['answer']; ?></td>
-    </tr>
-  </tbody>
-</table>
-      
+  $answer = $row['Answer'];
+  $finanswer = explode(" ",$answer,10);
+  // $department = $row['department'];
+  // $division= $row['division'];
+  // $question_name=$row['question_name'];
+  // $answer=$row['answer'];
+  // echo $answer;
 
-  <?php
+ echo "<table>";
+  echo "<tbody>";
+    echo "<tr>";
+         echo '<td style=padding-left:20px>  '.$row["student_id"] .'</td>';
+        echo "<td>  $finanswer[0] </td>";
+        echo "<td>  $finanswer[1] </td>";
+        echo "<td>  $finanswer[2] </td>";
+        echo "<td>  $finanswer[3] </td>";
+        echo "<td>  $finanswer[4] </td>";
+        echo "<td>  $finanswer[5] </td>";
+        echo "<td>  $finanswer[6] </td>";
+        echo "<td>  $finanswer[7] </td>";
+        echo "<td>  $finanswer[8] </td>";
+        echo "<td>  $finanswer[9] </td>";
+    echo "</tr>";
+  echo "</tbody>";
+echo "</table>";
+      
+  
 
       }
   } else {
@@ -83,18 +107,29 @@ $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 
       <script type="text/javascript" src="js/materialize.min.js"></script>
 
-
-   </div>
-</body>
+ <div class="card-action mycard1">
+          <span class="card-title">Student Satisfactory Survey Average</span>
+          <div style="margin-left:45% "><?php echo $average_all;?>
         </div>
+   </div>
+    </div>
       </div>
     </div>
   </div>
+</body>
+       
       
 <style>
+.mycard1{
+  display: flex;
+  flex-direction:row;
+}
 td{
-  max-width: 300px;
+  max-width: 10px;
   
+}
+.padd{
+  padding-right: 5px;
 }
 </style>
 </html>

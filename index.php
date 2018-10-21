@@ -13,21 +13,25 @@ $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
  
   $username = $connection->real_escape_string($_POST['usernamePhp']);
   $password = $connection->real_escape_string($_POST['passwordPhp']);
-  $data = $connection->query("SELECT student_id FROM student WHERE username = '$username' AND password = '$password' ");
+  $data = $connection->query("SELECT * FROM student WHERE username = '$username' AND password = '$password' ");
   $fill = $connection->query("SELECT has_filled FROM student WHERE username = '$username' AND password = '$password' ");
 while($row = $fill->fetch_assoc()){
   $has_filled = $row['has_filled'];
 }
 while($row = $data->fetch_assoc()){
   $student_id = $row['student_id'];
+  $division   = $row['division'];
+  $department = $row['department'];
 }
 
 // echo $has_filled;
 
   if($data->num_rows > 0 && $has_filled == "NO"){ 
-    $_SESSION['loggedIN'] = '1';
-    $_SESSION['username'] = $username;
-    $_SESSION['student_id']=$student_id;
+    $_SESSION['loggedIN']   = '1';
+    $_SESSION['username']   = $username;
+    $_SESSION['student_id'] = $student_id;
+    $_SESSION['division']   = $division;
+    $_SESSION['department'] = $department;
     exit('success');
     
   }

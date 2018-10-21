@@ -5,9 +5,10 @@ $dbuser="anjal";
 $dbpass="anjal";
 $dbname="student_feedback_survey";
 $username = $_SESSION['username'];
-
-
+$division = $_SESSION['division'];
+$department = $_SESSION['department'];
 $student_id = $_SESSION['student_id'];
+
 
 $connection= mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
  $group[0]=$_POST['group1'];  
@@ -28,7 +29,7 @@ while($row = $questionidentity->fetch_assoc()){
 
  for ($i = 0; $i < 10; $i++){
      
-    $query = mysqli_query($connection,"INSERT INTO feedback (student_id,question_id,answer) VALUES($student_id,$question[$i],$group[$i])");
+    $query = mysqli_query($connection,"INSERT INTO feedback (student_id,question_id,answer,department,division) VALUES($student_id,$question[$i],$group[$i],'$department','$division')");
     $query = mysqli_query($connection,"UPDATE student SET has_filled='YES' WHERE student_id = $student_id" );
  }
 
