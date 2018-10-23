@@ -10,7 +10,7 @@ $dbuser="anjal";
 $dbpass="anjal";
 $dbname="student_feedback_survey";
 $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
- 
+
   $username = $connection->real_escape_string($_POST['usernamePhp']);
   $password = $connection->real_escape_string($_POST['passwordPhp']);
   $data = $connection->query("SELECT * FROM student WHERE username = '$username' AND password = '$password' ");
@@ -26,16 +26,16 @@ while($row = $data->fetch_assoc()){
 
 // echo $has_filled;
 
-  if($data->num_rows > 0 && $has_filled == "NO"){ 
+  if($data->num_rows > 0 && $has_filled == "NO"){
     $_SESSION['loggedIN']   = '1';
     $_SESSION['username']   = $username;
     $_SESSION['student_id'] = $student_id;
     $_SESSION['division']   = $division;
     $_SESSION['department'] = $department;
     exit('success');
-    
+
   }
-  elseif($data->num_rows > 0 && $has_filled == "YES"){ 
+  elseif($data->num_rows > 0 && $has_filled == "YES"){
     exit('already input');
   }
 
@@ -55,7 +55,7 @@ while($row = $data->fetch_assoc()){
             <script src="js/materialize.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
+
   <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -68,9 +68,7 @@ while($row = $data->fetch_assoc()){
  <nav>
     <div class="nav-wrapper pink">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="faculty_login.php">Faculty Login</a></li>
-        <li><a href="admin_login.html">Admin Login</a></li>
-        
+        <li><a href="faculty_login.php">Faculty Login</a></li>        
       </ul>
     </div>
   </nav>
@@ -93,7 +91,7 @@ while($row = $data->fetch_assoc()){
       <input type="password" id="password" placeholder="password" id="password" value="" required>
     </div>
   </div>
-  
+
 
   <input class="btn"   type="button" id="submit" value="Submit">
 
@@ -129,17 +127,17 @@ $(document).ready(function(){
           M.toast({html: 'Incorrect Credentials'})
 
           if(response.indexOf('success')>=0)
-            window.location = 'main.php';          
+            window.location = 'main.php';
         },
         dataType: 'text',
 
-       
+
       }
     );
 
     }
 
-  
+
   });
 });
 

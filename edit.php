@@ -28,7 +28,7 @@ $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
    <nav>
     <div class="nav-wrapper pink">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="faculty_logout.php">Logout</a></li>
         <li><a href="faculty_main.php">Faculty Home</a></li>
       </ul>
     </div>
@@ -41,29 +41,29 @@ $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
           <span class="card-title center">Add student</span>
 
              <div class="row">
-   <form id="form" action="addstudent.php" method="post" class="col s12">
+   <form id="form" action="editstudent.php" method="post" class="col s12">
 
          <div class="row">
         <div class="input-field col s12">
-          <input id="grno" name="grno" type="text" class="validate" required>
+          <input id="grno" name="grno" type="text" class="validate"  >
           <label for="grno">Gr. No</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="username" name="username" type="text" class="validate" required>
+          <input id="username" name="username" type="text" class="validate"  >
           <label for="username">User Name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" name="password" type="text" class="validate" required>
+          <input id="password" name="password" type="text" class="validate"  >
           <label for="password">Password</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="department" name="department" type="text" class="validate" required>
+          <input id="department" name="department" type="text" class="validate"  >
           <label for="department">Department</label>
         </div>
       </div>

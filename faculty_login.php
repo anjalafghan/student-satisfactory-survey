@@ -10,24 +10,26 @@ $dbuser="anjal";
 $dbpass="anjal";
 $dbname="student_feedback_survey";
 $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
- 
+
   $username = $connection->real_escape_string($_POST['usernamePhp']);
   $password = $connection->real_escape_string($_POST['passwordPhp']);
-  
-  $data = $connection->query("SELECT faculty_id FROM faculty WHERE faculty_username = '$username' AND faculty_password = '$password' ");
-  
+
+  $data = $connection->query("SELECT faculty_id,department_name FROM faculty WHERE faculty_username = '$username' AND faculty_password = '$password' ");
+
 
 while($row = $data->fetch_assoc()){
   $faculty_id = $row['faculty_id'];
+  $faculty_department = $row['department_name'];
 }
 
 
-  if($data->num_rows > 0 ){ 
+  if($data->num_rows > 0 ){
     $_SESSION['loggedIN'] = '1';
     $_SESSION['username'] = $username;
     $_SESSION['faculty_id']=$faculty_id;
+    $_SESSION['faculty_department']=$faculty_department;
     exit('success');
-    
+
   }
   else{
     exit('failed');
@@ -45,7 +47,7 @@ while($row = $data->fetch_assoc()){
             <script src="js/materialize.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
+
   <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -58,7 +60,7 @@ while($row = $data->fetch_assoc()){
  <nav>
     <div class="nav-wrapper pink">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="index.php">Home</a></li>
 
       </ul>
     </div>
@@ -82,7 +84,7 @@ while($row = $data->fetch_assoc()){
       <input type="password" id="password" placeholder="password" id="password" value="" required>
     </div>
   </div>
-  
+
 
   <input class="btn"   type="button" id="submit" value="Submit">
 
@@ -112,22 +114,22 @@ $(document).ready(function(){
         },
         success: function(response){
           $("#response").html(response);
-          
+
           if(response == 'failed')
           M.toast({html: 'Incorrect Credentials'})
 
           if(response.indexOf('success')>=0)
-            window.location = 'faculty_main.php';          
+            window.location = 'faculty_main.php';
         },
         dataType: 'text',
 
-       
+
       }
     );
 
     }
 
-  
+
   });
 });
 

@@ -28,7 +28,7 @@ if(!isset($_SESSION['loggedIN'])){
         <nav>
     <div class="nav-wrapper pink">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="faculty_logout.php">Logout</a></li>
 
       </ul>
     </div>
@@ -36,7 +36,7 @@ if(!isset($_SESSION['loggedIN'])){
 <div class="container">
     <input class="button-primary btn" type="submit" onclick="location.href = 'view.php'" value="View Report">&nbsp;&nbsp;&nbsp;
     <input class="button-primary btn" type="submit" onclick="location.href = 'add.php'" value="Add Student">&nbsp;&nbsp;&nbsp;
-    <input class="button-primary btn" type="submit" onclick="location.href = 'change.php'" value="Edit Student">
+    <input class="button-primary btn" type="submit" onclick="location.href = 'edit.php'" value="Edit Student">
 
   </div>
       <!--JavaScript at end of body for optimized loading-->
@@ -49,4 +49,4 @@ if(!isset($_SESSION['loggedIN'])){
 
     }
     </style>
-  </html> 
+  </html>

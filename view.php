@@ -3,7 +3,14 @@ session_start();
 if(!isset($_SESSION['loggedIN'])){
   header('Location: index.php');
   exit();
-}?>
+}
+$dbhost="localhost";
+$dbuser="anjal";
+$dbpass="anjal";
+$dbname="student_feedback_survey";
+$connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
+$faculty_department = $_SESSION['faculty_department'];
+?>
 <!DOCTYPE html>
 <html>
  <head>
@@ -20,7 +27,7 @@ if(!isset($_SESSION['loggedIN'])){
      <nav>
     <div class="nav-wrapper pink">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="logout.php">Logout</a></li>
+        <li><a href="faculty_logout.php">Logout</a></li>
         <li><a href="faculty_main.php">Faculty Home</a></li>
 
       </ul>
@@ -34,22 +41,17 @@ if(!isset($_SESSION['loggedIN'])){
           <img src="saraswati.png">
         </div>
         <div class="card-content black-text">
-        <span class="card-title center">INFORMATION TECHNOLOGY</span>
+        <span class="card-title center"><?php echo "$faculty_department"; ?></span>
           <span class="card-title"><h4>Student Satisfactory Survey Report</h4></span>
           <?php
-    $dbhost="localhost";
-$dbuser="anjal";
-$dbpass="anjal";
-$dbname="student_feedback_survey";
-$connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
- $faculty_department = $_SESSION['faculty_department'];
+
   $data = $connection->query("SELECT feedback.student_id,feedback.department,GROUP_CONCAT(answer SEPARATOR ' ') AS Answer from feedback WHERE feedback.department = '$faculty_department' GROUP BY student_id");
   $average = $connection->query("SELECT feedback.department, ROUND(AVG(answer),2) AS average FROM feedback WHERE feedback.department='$faculty_department'");
  while($row = $average->fetch_assoc()){
   $average_all = $row['average'];
  }
    if ($result->num_rows >= 0) {
-     
+
 echo "<table class='striped'>";
     echo "<thead>";
        echo "<tr class='padd'>";
@@ -67,7 +69,7 @@ echo "<table class='striped'>";
       echo "</tr> ";
     echo "</thead>";
    echo " </table>";
-   
+
  while($row = $data->fetch_assoc()){
   $id = $row['student_id'];
   $answer = $row['Answer'];
@@ -95,8 +97,8 @@ echo "<table class='striped'>";
     echo "</tr>";
   echo "</tbody>";
 echo "</table>";
-      
-  
+
+
 
       }
   } else {
@@ -117,8 +119,8 @@ echo "</table>";
     </div>
   </div>
 </body>
-       
-      
+
+
 <style>
 .mycard1{
   display: flex;
@@ -126,7 +128,7 @@ echo "</table>";
 }
 td{
   max-width: 10px;
-  
+
 }
 .padd{
   padding-right: 5px;
