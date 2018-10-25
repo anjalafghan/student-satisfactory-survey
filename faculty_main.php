@@ -36,7 +36,7 @@ if(!isset($_SESSION['loggedIN'])){
 <div class="container">
     <input class="button-primary btn" type="submit" onclick="location.href = 'view.php'" value="View Report">&nbsp;&nbsp;&nbsp;
     <input class="button-primary btn" type="submit" onclick="location.href = 'add.php'" value="Add Student">&nbsp;&nbsp;&nbsp;
-    <input class="button-primary btn" type="submit" onclick="location.href = 'edit.php'" value="Edit Student">
+    <input class="button-primary btn" type="submit" onclick="location.href = 'fullview.php'" value="Edit Student">
 
   </div>
       <!--JavaScript at end of body for optimized loading-->

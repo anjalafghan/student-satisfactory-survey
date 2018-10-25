@@ -45,7 +45,7 @@ $faculty_department = $_SESSION['faculty_department'];
           <span class="card-title"><h4>Student Satisfactory Survey Report</h4></span>
           <?php
 
-  $data = $connection->query("SELECT feedback.student_id,feedback.department,GROUP_CONCAT(answer SEPARATOR ' ') AS Answer from feedback WHERE feedback.department = '$faculty_department' GROUP BY student_id");
+  $data = $connection->query("SELECT feedback.student_id,GROUP_CONCAT(answer SEPARATOR ' ') AS Answer from feedback   GROUP BY student_id");
   $average = $connection->query("SELECT feedback.department, ROUND(AVG(answer),2) AS average FROM feedback WHERE feedback.department='$faculty_department'");
  while($row = $average->fetch_assoc()){
   $average_all = $row['average'];

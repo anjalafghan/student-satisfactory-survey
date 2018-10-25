@@ -84,7 +84,6 @@ $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
       </div>
     </div>
   </div>
-      <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script>
 function submitForm(){
