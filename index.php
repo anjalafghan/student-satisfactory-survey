@@ -67,10 +67,11 @@ while($row = $data->fetch_assoc()){
     <div class="nav-wrapper pink">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="faculty_login.php">Faculty Login</a></li>
+        
       </ul>
     </div>
   </nav>
-<center><h2><p style="margin-top:5%;">Student Feedback Survey</p></h2></center>
+<center><h2><p style="margin-top:5%;">Student Satisfactory Survey</p></h2></center>
 
   <div class="container">
     <div class="row" >
