@@ -5,11 +5,8 @@ if(!isset($_SESSION['loggedIN'])){
   exit();
 }
 session_start();
+include_once 'initials.php';
 
-    $dbhost="localhost";
-$dbuser="anjal";
-$dbpass="anjal";
-$dbname="student_feedback_survey";
 $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 
 ?>

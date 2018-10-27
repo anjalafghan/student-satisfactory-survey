@@ -1,13 +1,11 @@
 <?php
 session_start();
+include_once 'initials.php';
 if(!isset($_SESSION['loggedIN'])){
   header('Location: index.php');
   exit();
 }
-$dbhost="localhost";
-$dbuser="anjal";
-$dbpass="anjal";
-$dbname="student_feedback_survey";
+
 $connection= mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
 $stmt = mysqli_query($connection,"SELECT question_name FROM question");
 $ques = Array();

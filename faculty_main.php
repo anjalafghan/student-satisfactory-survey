@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once 'initials.php';
 if(!isset($_SESSION['loggedIN'])){
   header('Location: index.php');
   exit();

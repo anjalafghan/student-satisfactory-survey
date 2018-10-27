@@ -1,14 +1,12 @@
 <?php
 session_start();
+include_once 'initials.php';
 if(isset($_SESSION['loggedIN'])){
   header('Location: main.php');
   exit();
 }
 if(isset($_POST['login'])){
-$dbhost="localhost";
-$dbuser="anjal";
-$dbpass="anjal";
-$dbname="student_feedback_survey";
+
 $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 
   $username = $connection->real_escape_string($_POST['usernamePhp']);
@@ -68,7 +66,7 @@ while($row = $data->fetch_assoc()){
  <nav>
     <div class="nav-wrapper pink">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="faculty_login.php">Faculty Login</a></li>        
+        <li><a href="faculty_login.php">Faculty Login</a></li>
       </ul>
     </div>
   </nav>

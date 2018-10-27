@@ -1,14 +1,12 @@
 <?php
 session_start();
+include_once 'initials.php';
 if(isset($_SESSION['loggedIN'])){
   header('Location: faculty_main.php');
   exit();
 }
 if(isset($_POST['login'])){
-$dbhost="localhost";
-$dbuser="anjal";
-$dbpass="anjal";
-$dbname="student_feedback_survey";
+
 $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 
   $username = $connection->real_escape_string($_POST['usernamePhp']);

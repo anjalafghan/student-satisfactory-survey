@@ -1,13 +1,11 @@
 <?php
 session_start();
+include_once 'initials.php';
 if(!isset($_SESSION['loggedIN'])){
   header('Location: index.php');
   exit();
 }
-$dbhost="localhost";
-$dbuser="anjal";
-$dbpass="anjal";
-$dbname="student_feedback_survey";
+
 $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
 $faculty_department = $_SESSION['faculty_department'];
 ?>
