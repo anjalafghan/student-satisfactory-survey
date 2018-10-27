@@ -27,13 +27,13 @@ while($row = $questionidentity->fetch_assoc()){
  for ($i = 0; $i < 10; $i++){
 
     $query = mysqli_query($connection,"INSERT INTO feedback (student_id,question_id,answer,department,division) VALUES($student_id,$question[$i],$group[$i],'$department','$division')");
-    $query = mysqli_query($connection,"UPDATE student SET has_filled='YES' WHERE student_id = $student_id" );
  }
+ $query = mysqli_query($connection,"UPDATE student SET has_filled='YES' WHERE student_id = $student_id" );
 
 unset($_SESSION['loggedIN']);
 session_destroy();
 echo "Feedback successfully entered";
-header('Refresh:1;URL=index.php');
+header('Location: index.php');
 
 exit();
 
