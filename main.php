@@ -15,7 +15,8 @@ while($row = $stmt->fetch_assoc()){
 }
 $username = $_SESSION['username'];
 ?>
- <!DOCTYPE html>
+
+
   <html>
     <head>
       <!--Import Google Icon Font-->
@@ -313,7 +314,7 @@ $username = $_SESSION['username'];
                <div class="card-action">
                        <button class="btn waves-effect waves-light" onclick="submitForm()" type="submit" name="submit" value="Submit">Submit
                        </button>
-                       <button type="button" class="btn waves-effect waves-light red text-white" name="button"><a href="logout.php" class=" black-text">CANCEL</a></button>
+                       <button type="button" class="btn waves-effect waves-light red " name="button"><a href="logout.php" class=" white-text">CANCEL</a></button>
              </div>
            </div>
          </div>
