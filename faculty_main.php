@@ -1,7 +1,11 @@
 <?php
 session_start();
 include_once 'initials.php';
-if(!isset($_SESSION['loggedIN'])){
+// if(!isset($_SESSION['loggedIN'])){
+//   header('Location: index.php');
+//   exit();
+// }
+if(!isset($_SESSION['facultyloggedIN'])){
   header('Location: index.php');
   exit();
 }
@@ -31,13 +35,14 @@ if(!isset($_SESSION['loggedIN'])){
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="faculty_logout.php">Logout</a></li>
 
+
       </ul>
     </div>
   </nav>
 <div class="container">
     <input class="button-primary btn" type="submit" onclick="location.href = 'view.php'" value="View Report">&nbsp;&nbsp;&nbsp;
     <input class="button-primary btn" type="submit" onclick="location.href = 'add.php'" value="Add Student">&nbsp;&nbsp;&nbsp;
-    <input class="button-primary btn" type="submit" onclick="location.href = 'fullview.php'" value="Edit Student">
+    <input class="button-primary btn" type="submit" onclick="location.href = 'fullview.php'" value="View College Report">
 
   </div>
       <!--JavaScript at end of body for optimized loading-->

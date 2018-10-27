@@ -61,43 +61,63 @@ while($row = $data->fetch_assoc()){
    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style media="screen">
+        .m2card{
+          padding: 50px;
+        }
+      </style>
 </head>
 <body >
  <nav>
     <div class="nav-wrapper pink">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="faculty_login.php">Faculty Login</a></li>
-        
+
       </ul>
     </div>
   </nav>
 <center><h2><p style="margin-top:5%;">Student Satisfactory Survey</p></h2></center>
 
-  <div class="container">
-    <div class="row" >
-      <div class="nine columns  box" style=" margin-left: 15%; padding: 50px;">
-        <h3>Login</h3>
-     <form id="form" action="index.php" method="post" class="ajax">
-  <div class="row">
-    <div class="three columns">
-      <label for="username"></label>
-      <input type="text" id="username" placeholder="username" id="username"  required>
-    </div>
-    </div>
-    <div class="row">
-    <div class="six columns">
-      <label for="password"></label>
-      <input type="password" id="password" placeholder="password" id="password" value="" required>
-    </div>
-  </div>
+  <div class="container center">
 
+      <div class="row">
+        <div class="col s12 m6 offset-m3">
+          <div class="card white m2card ">
+            <div class="card-content black-text">
+              <span class="card-title"><h3>Login</h3></span>
+              <div class="row" >
+                <div class="nine columns box" >
+                  <!-- style=" margin-left: 15%; padding: 50px;" -->
+               <form id="form" action="index.php" method="post" class="ajax">
+                 <div class="row">
+                     <div class="six columns">
+                       <div class="input-field col s12 m12">
+                         <input type="text" id="username" class="validate" id="username"  required>
+                         <label for="username">User Name</label>
+                       </div>
+                     </div>
+                 </div>
 
-  <input class="btn"   type="button" id="submit" value="Submit">
+                 <div class="row">
+                     <div class="six columns">
+                       <div class="input-field col s12 m12">
+                         <input type="password" id="password"  class="validate" id="password" value="" required>
+                         <label for="password">Password</label>
+                       </div>
+                     </div>
+                 </div>
 
-  <p id="response" hidden></p>
-</form>
+              <p id="response" hidden></p>
+              </form>
+                </div>
+              </div>
+            </div>
+            <div class="card-action">
+              <input class="btn pink "   type="button" id="submit" value="Submit">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
 <script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript">

@@ -22,7 +22,7 @@ while($row = $data->fetch_assoc()){
 
 
   if($data->num_rows > 0 ){
-    $_SESSION['loggedIN'] = '1';
+    $_SESSION['facultyloggedIN'] = '1';
     $_SESSION['username'] = $username;
     $_SESSION['faculty_id']=$faculty_id;
     $_SESSION['faculty_department']=$faculty_department;

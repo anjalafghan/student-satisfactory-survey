@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once 'initials.php';
-if(!isset($_SESSION['loggedIN'])){
+if(!isset($_SESSION['facultyloggedIN'])){
   header('Location: index.php');
   exit();
 }
