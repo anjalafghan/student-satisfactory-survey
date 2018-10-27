@@ -28,7 +28,7 @@ $username = $_SESSION['username'];
     </head>
 
     <body>
-      <div class="centerr">
+      <div class="center">
 
 
       <div class="row">
@@ -313,7 +313,7 @@ $username = $_SESSION['username'];
                <div class="card-action">
                        <button class="btn waves-effect waves-light" onclick="submitForm()" type="submit" name="submit" value="Submit">Submit
                        </button>
-                       <button type="button" class="btn waves-effect waves-light red" name="button"><a href="logout.php" class=" black-text">CANCEL</a></button>
+                       <button type="button" class="btn waves-effect waves-light red text-white" name="button"><a href="logout.php" class=" black-text">CANCEL</a></button>
              </div>
            </div>
          </div>

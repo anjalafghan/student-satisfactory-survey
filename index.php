@@ -22,7 +22,7 @@ while($row = $data->fetch_assoc()){
   $department = $row['department'];
 }
 
-// echo $has_filled;
+
 
   if($data->num_rows > 0 && $has_filled == "NO"){
     $_SESSION['loggedIN']   = '1';

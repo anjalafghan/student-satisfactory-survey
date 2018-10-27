@@ -1,30 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
---
--- Host: localhost:8889
--- Generation Time: Oct 25, 2018 at 01:46 PM
--- Server version: 5.7.23
--- PHP Version: 7.2.8
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `student_feedback_survey`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `faculty`
---
 
 CREATE TABLE `faculty` (
   `faculty_id` int(11) NOT NULL,
@@ -35,21 +16,11 @@ CREATE TABLE `faculty` (
   `faculty_designation` varchar(100) NOT NULL DEFAULT 'Teacher'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `faculty`
---
-
 INSERT INTO `faculty` (`faculty_id`, `faculty_name`, `faculty_username`, `faculty_password`, `department_name`, `faculty_designation`) VALUES
 (1, 'a', 'a', 'a', 'INFORMATION TECHNOLOGY', 'Teacher'),
 (2, 'b', 'b', 'b', 'CIVIL', 'Teacher'),
 (3, 'c', 'c', 'c', 'MECHANICAL', 'Teacher'),
 (4, 'd', 'd', 'd', 'AUTOMOBILE', 'Teacher');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `feedback`
---
 
 CREATE TABLE `feedback` (
   `feedback_id` int(11) NOT NULL,
@@ -60,10 +31,6 @@ CREATE TABLE `feedback` (
   `division` varchar(2) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `feedback`
---
 
 INSERT INTO `feedback` (`feedback_id`, `student_id`, `question_id`, `answer`, `department`, `division`, `time`) VALUES
 (1, 7, 1, 5, 'INFORMATION TECHNOLOGY', '', '2018-10-24 14:49:22'),
@@ -85,47 +52,32 @@ INSERT INTO `feedback` (`feedback_id`, `student_id`, `question_id`, `answer`, `d
 (17, 4, 7, 3, 'MECHANICAL', 'A', '2018-10-24 15:25:03'),
 (18, 4, 8, 5, 'MECHANICAL', 'A', '2018-10-24 15:25:03'),
 (19, 4, 9, 4, 'MECHANICAL', 'A', '2018-10-24 15:25:03'),
-(20, 4, 10, 3, 'MECHANICAL', 'A', '2018-10-24 15:25:03');
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `final_view`
--- (See below for the actual view)
---
-CREATE TABLE `final_view` (
-`student_id` int(11)
-,`department` varchar(100)
-,`division` varchar(2)
-,`question_name` text
-,`answer` int(11)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `new_view`
--- (See below for the actual view)
---
-CREATE TABLE `new_view` (
-`student_id` int(11)
-,`answer` int(11)
-);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `question`
---
+(20, 4, 10, 3, 'MECHANICAL', 'A', '2018-10-24 15:25:03'),
+(21, 10, 1, 5, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(22, 10, 2, 4, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(23, 10, 3, 3, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(24, 10, 4, 4, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(25, 10, 5, 3, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(26, 10, 6, 4, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(27, 10, 7, 3, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(28, 10, 8, 4, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(29, 10, 9, 4, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(30, 10, 10, 4, 'MECHANICAL', 'B', '2018-10-27 13:06:29'),
+(31, 8, 1, 2, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(32, 8, 2, 2, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(33, 8, 3, 2, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(34, 8, 4, 3, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(35, 8, 5, 3, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(36, 8, 6, 3, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(37, 8, 7, 4, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(38, 8, 8, 5, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(39, 8, 9, 4, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26'),
+(40, 8, 10, 5, 'INFORMATION TECHNOLOGY', '', '2018-10-27 13:13:26');
 
 CREATE TABLE `question` (
   `question_id` int(11) NOT NULL,
   `question_name` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `question`
---
 
 INSERT INTO `question` (`question_id`, `question_name`) VALUES
 (1, 'The overall quality of teaching-learning process in your institute is very good.'),
@@ -139,12 +91,6 @@ INSERT INTO `question` (`question_id`, `question_name`) VALUES
 (9, 'Teachers encourage you to participate in extracurricular activities.\r\n'),
 (10, 'Efforts are made by the institute/ teachers to inculcate soft skills, life skills and employability skills to make you ready for the world of work.\r\n');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
 CREATE TABLE `student` (
   `student_id` int(11) NOT NULL,
   `gr_no` varchar(200) NOT NULL,
@@ -155,106 +101,48 @@ CREATE TABLE `student` (
   `has_filled` varchar(3) NOT NULL DEFAULT 'NO'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `student`
---
-
 INSERT INTO `student` (`student_id`, `gr_no`, `username`, `password`, `department`, `division`, `has_filled`) VALUES
 (3, '1', 'srk', 'srk', 'INFORMATION TECHNOLOGY', '', 'NO'),
 (4, '3', 'amir', 'amir', 'MECHANICAL', 'A', 'YES'),
 (5, '2', 'salman', 'salman', 'EXTC', '', 'NO'),
 (6, '4', 'amitabh', 'amitabh', 'AUTOMOBILE', '', 'NO'),
 (7, '5', 'a', 'a', 'INFORMATION TECHNOLOGY', '', 'YES'),
-(8, '6', 'b', 'b', 'INFORMATION TECHNOLOGY', '', 'NO'),
+(8, '6', 'b', 'b', 'INFORMATION TECHNOLOGY', '', 'YES'),
 (9, '7', 'c', 'c', 'MECHANICAL', 'A', 'NO'),
-(10, '8', 'd', 'd', 'MECHANICAL', 'B', 'NO'),
+(10, '8', 'd', 'd', 'MECHANICAL', 'B', 'YES'),
 (11, '9', 'e', 'e', 'INFORMATION TECHNOLOGY', '', 'NO'),
 (12, '10', 'f', 'f', 'INFORMATION TECHNOLOGY', '', 'NO'),
 (13, '11', 'g', 'g', 'MECHANICAL', '', 'NO');
 
--- --------------------------------------------------------
 
---
--- Structure for view `final_view`
---
-DROP TABLE IF EXISTS `final_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `final_view`  AS  select distinct `student`.`student_id` AS `student_id`,`student`.`department` AS `department`,`student`.`division` AS `division`,`question`.`question_name` AS `question_name`,`feedback`.`answer` AS `answer` from ((`student` join `feedback`) join `question`) where (`question`.`question_id` = `feedback`.`question_id`) order by `student`.`student_id` ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `new_view`
---
-DROP TABLE IF EXISTS `new_view`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `new_view`  AS  select `feedback`.`student_id` AS `student_id`,`feedback`.`answer` AS `answer` from `feedback` ;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `faculty`
---
 ALTER TABLE `faculty`
   ADD PRIMARY KEY (`faculty_id`);
 
---
--- Indexes for table `feedback`
---
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedback_id`),
   ADD KEY `question-foreign` (`question_id`),
   ADD KEY `student-foreign` (`student_id`);
 
---
--- Indexes for table `question`
---
 ALTER TABLE `question`
   ADD PRIMARY KEY (`question_id`);
 
---
--- Indexes for table `student`
---
 ALTER TABLE `student`
   ADD PRIMARY KEY (`student_id`);
 
---
--- AUTO_INCREMENT for dumped tables
---
 
---
--- AUTO_INCREMENT for table `faculty`
---
 ALTER TABLE `faculty`
   MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
---
--- AUTO_INCREMENT for table `feedback`
---
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
---
--- AUTO_INCREMENT for table `question`
---
 ALTER TABLE `question`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
---
--- AUTO_INCREMENT for table `student`
---
 ALTER TABLE `student`
   MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
---
--- Constraints for dumped tables
---
 
---
--- Constraints for table `feedback`
---
 ALTER TABLE `feedback`
   ADD CONSTRAINT `question-foreign` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `student-foreign` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
