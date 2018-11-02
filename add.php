@@ -91,6 +91,7 @@ $connection= new mysqli($dbhost,$dbuser,$dbpass,$dbname);
       <option value="COMPUTER SCIENCE">COMPUTER SCIENCE</option>
       <option value="MECHANICAL">MECHANICAL</option>
       <option value="ELECTRONICS AND TELECOMMUNICATION">EXTC</option>
+      <option value="AUTOMOBILE">AUTOMOBILE</option>
     </select>
     <label>Select your Department</label>
   </div>

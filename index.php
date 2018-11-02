@@ -20,6 +20,7 @@ while($row = $data->fetch_assoc()){
   $student_id = $row['student_id'];
   $division   = $row['division'];
   $department = $row['department'];
+  $roll_no     = $row['roll_no'];
 }
 
 
@@ -30,6 +31,7 @@ while($row = $data->fetch_assoc()){
     $_SESSION['student_id'] = $student_id;
     $_SESSION['division']   = $division;
     $_SESSION['department'] = $department;
+    $_SESSION['roll_no']    = $roll_no;
     exit('success');
 
   }

@@ -39,17 +39,13 @@ $faculty_department = $_SESSION['faculty_department'];
           <img src="saraswati.png">
         </div>
         <div class="card-content black-text">
-        <span class="card-title center"><?php 
-        if($faculty_department == "INFORMATION TECHNOLOGY" ){
-            echo "DEPARTMENT OF $faculty_department";}
-            else{
-            echo "DEPARTMENT OF $faculty_department ENGINEERING";}?></span>
-          <span class="card-title"><h4>Student Satisfactory Survey Report</h4></span>
+
+          <span class="card-title center"><h4>Student Satisfactory Survey Report</h4></span>
           <?php
 
-  $data = $connection->query("SELECT feedback.student_id,feedback.roll_no,feedback.department,GROUP_CONCAT(answer SEPARATOR ' ') AS Answer from feedback WHERE feedback.department = '$faculty_department' GROUP BY roll_no");
-  $average = $connection->query("SELECT feedback.department, ROUND(AVG(answer),2) AS average FROM feedback WHERE feedback.department='$faculty_department'");
- while($row = $average->fetch_assoc()){
+  $data = $connection->query("SELECT feedback.student_id,GROUP_CONCAT(answer SEPARATOR ' ') AS Answer from feedback   GROUP BY student_id");
+  $average = $connection->query("SELECT ROUND(AVG(answer),2) AS average FROM feedback "); 
+  while($row = $average->fetch_assoc()){
   $average_all = $row['average'];
  }
    if ($result->num_rows >= 0) {
@@ -57,7 +53,7 @@ $faculty_department = $_SESSION['faculty_department'];
 echo "<table class='striped'>";
     echo "<thead>";
        echo "<tr class='padd'>";
-        echo "<th>Roll No</th>";
+        echo "<th>Sr No</th>";
         echo "<th>Q 1</th>";
         echo "<th>Q 2</th>";
         echo "<th>Q 3</th> ";
@@ -71,16 +67,16 @@ echo "<table class='striped'>";
       echo "</tr> ";
     echo "</thead>";
    echo " </table>";
-
+$i = 0;
  while($row = $data->fetch_assoc()){
-  $rollno = $row['roll_no'];
+  $i++;
   $answer = $row['Answer'];
   $finanswer = explode(" ",$answer,11);
 
  echo "<table>";
   echo "<tbody>";
     echo "<tr>";
-         echo '<td style=padding-left:20px>  '.$row["roll_no"] .'</td>';
+         echo '<td style=padding-left:10px>  '.$i .'</td>';
         echo "<td>  $finanswer[0] </td>";
         echo "<td>  $finanswer[1] </td>";
         echo "<td>  $finanswer[2] </td>";
@@ -110,8 +106,9 @@ echo "</table>";
           <span class="card-title">Student Satisfactory Survey Average</span>
           <div style="margin-left:45% "><?php echo $average_all;?>
         </div>
+
    </div>
-            <div> <input type="button" class="btn" link media="print" href="/css/materialize.css"
+          <div> <input type="button" class="btn" link media="print" href="/css/materialize.css"
  value="Print this page" onClick="window.print()"></div>
     </div>
       </div>

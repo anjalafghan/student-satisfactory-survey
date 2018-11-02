@@ -1,12 +1,12 @@
  <?php
+ ob_start();
 session_start();
 include_once 'initials.php';
 $username = $_SESSION['username'];
 $division = $_SESSION['division'];
 $department = $_SESSION['department'];
 $student_id = $_SESSION['student_id'];
-
-
+$roll_no     = $_SESSION['roll_no'];
 $connection= mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
  $group[0]=$_POST['group1'];
  $group[1]=$_POST['group2'];
@@ -26,15 +26,15 @@ while($row = $questionidentity->fetch_assoc()){
 
  for ($i = 0; $i < 10; $i++){
 
-    $query = mysqli_query($connection,"INSERT INTO feedback(student_id,question_id,answer,department,division) VALUES($student_id,$question[$i],$group[$i],'$department','$division')");
+    $query = mysqli_query($connection,"INSERT INTO feedback(student_id,roll_no,question_id,answer,department,division) VALUES($student_id,$roll_no,$question[$i],$group[$i],'$department','$division')");
  }
  $query = mysqli_query($connection,"UPDATE student SET has_filled='YES' WHERE student_id = $student_id" );
 
+
 unset($_SESSION['loggedIN']);
+unset($_SESSION['facultyloggedIN']);
 session_destroy();
-echo "Feedback successfully entered";
-header('Location: index.php');
-
+echo "<script type='text/javascript'>  window.location='logout.php'; </script>";
+header('Location: logout.php');
 exit();
-
 ?>
